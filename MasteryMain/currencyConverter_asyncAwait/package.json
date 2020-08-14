@@ -1,0 +1,14 @@
+{
+  "name": "currencyconverter_asyncawait",
+  "version": "1.0.0",
+  "description": "practice with async await",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christopher",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
