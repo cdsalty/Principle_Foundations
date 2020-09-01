@@ -11,27 +11,34 @@ const Posts = () => {
   const url = "http://jsonplaceholder.typicode.com/posts";
 
   useEffect(() => {
-    axios.get(url)
-      .then((response) => setPosts(response.data));
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get(url);
+
+        setPosts(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchData();
   }, []);
 
-  console.log(posts);
-
-  // Map over posts and display a Post component for each element in the posts array
-  // pass over the data for each specific post as props to the Post component
-  // in the Post component, nicely lay out all the details
-
-
+  if (posts.length === 0) return 'Loading';
 
   return (
     <div>
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      { posts.map((post) => <Post postData={ post } />) }
     </div>
   );
 }
+
+// console.log(posts);
+// posts.map((post) => {
+//   return post.id
+// })
+// Map over posts and display a Post component for each element in the posts array
+// pass over the data for each specific post as props to the Post component
+// in the Post component, nicely lay out all the details
 
 export default Posts
