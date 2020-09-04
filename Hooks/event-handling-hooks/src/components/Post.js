@@ -1,7 +1,7 @@
 import React from 'react';
 
 // const person = {
-//   firstName: 'Chris',
+//   firstName: 'Christopher',
 //   car: {
 //     color: 'red',
 //     wheels: 4
@@ -10,18 +10,23 @@ import React from 'react';
 
 // const { firstName, car: { wheels, color } } = person;
 
-// console.log(firstName);
-// console.log(wheels);
-// console.log(color);
+// display the thumbnail and onClick show url
 
-const Post = ({ postData: { userId, title, body, id } }) => {
+const Post = ({ postData: { id, title, url, thumbnailUrl } }) => {
+
+  // const showFullImage = (image) => {
+  //   return image.url;
+  // }
+
+
+
   return (
     <div>
       <div className="post-container">
-        <h6 className="userid">Created By: { userId }</h6>
-        <h5 className="title">Title:{ title }</h5>
-        <p className="body">Body: { body } </p>
-        <h6 className="id">Id: { id } </h6>
+        <h2>Title: {title}</h2>
+        <h6 className="userid">Created By: {id}</h6>
+        <a href={url}><img className="imgSrc" alt="pic" key={id} src={thumbnailUrl} /></a>
+        {/* <img className="imgSrc" alt="pic" key={id} src={thumbnailUrl}  /> */}
       </div>
     </div>
   );

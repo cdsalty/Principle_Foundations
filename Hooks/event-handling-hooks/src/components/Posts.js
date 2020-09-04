@@ -6,29 +6,27 @@ import Post from './Post';
 // https://www.figma.com/file/mzCC1e612lrmzaCbqhlHkK/Untitled?node-id=0%3A1
 
 const Posts = () => {
-  const [posts, setPosts] = useState([]);
+  const [photos, setPhotos] = useState([]);
 
-  const url = "http://jsonplaceholder.typicode.com/posts";
+  const url = "https://jsonplaceholder.typicode.com/photos"
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(url);
-
-        setPosts(data);
+        setPhotos(data);
       } catch (error) {
         console.log(error);
       }
     }
-
     fetchData();
   }, []);
 
-  if (posts.length === 0) return 'Loading';
+  if (photos.length === 0) return 'Loading';
 
   return (
     <div>
-      { posts.map((post) => <Post postData={ post } />) }
+      {photos.map((photo) => <Post postData={photo} />)}
     </div>
   );
 }
